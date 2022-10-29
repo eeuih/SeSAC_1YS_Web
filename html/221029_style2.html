@@ -1,0 +1,41 @@
+<html>
+
+    <head> 
+        <title> 가상 선택자 </title>
+        
+        <style> 
+          
+           /* div { width: 100px; height: 100px; background-color: yellow; }
+           div:hover { cursor: pointer; background-color: blue; }
+           a { color:black; }
+           p:active { color:red; } 활성화 되거나 클릭 되었을 때 
+           input:focus { background-color :blue; }  포커스가 맞춰져 있는 상태
+           a:visited { color:green; }  a 링크 방문 이후 상태 */
+
+           .fruits span:first-child { color : red; }
+           .fruits div:first-child { color : red; } /* fruits 클래스 아래 첫번째 자식이 div일 경우에 적용이 됨 */
+           .fruits h3:last-child { color : red; }
+           .fruits *:nth-child(3) { color : blue; }
+           .fruits *:not(p) { font-weight : 900; }
+
+           
+        </style>
+    </head>
+
+    <body>
+        <div> </div>
+        <a href="https://www.naver.com">링크</a>
+        <p>p 태그</p>
+        <input type="text">
+
+        <div class="fruits">
+            <!-- <div>레몬</div> -->
+            <span>딸기</span>
+            <span>수박</span>
+            <div>오렌지</div>
+            <p>망고</p>
+            <h3>사과</h3>
+        </div>
+    </body>
+
+</html>

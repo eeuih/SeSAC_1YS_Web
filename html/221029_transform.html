@@ -1,0 +1,49 @@
+<html>
+
+    <head>
+        <title>transform</title>
+        
+        <style>
+            #bg {background-color: lightgray; z-index: -10; margin:auto; width: 1200px; height: 800px; position: relative;}
+          
+            #box1 {
+                width : 350px; height: 250px;
+                transform: skewY(20deg); 
+                background-color: rgb(208, 255, 255); 
+                position: absolute; 
+                top:300px;
+                left:200px; 
+                z-index: 5;}
+
+            #box2 {
+                width : 350px; height: 250px;
+                transform: skewY(20deg); 
+                background-color: rgb(152, 207, 207); 
+                position: absolute; 
+                top:300px; 
+                left:400px;
+                z-index: 4; }
+
+            #box3 {
+                width : 350px; height: 250px;
+                transform: skewY(20deg); 
+                background-color: rgb(99, 160, 160); 
+                position: absolute; 
+                top:300px; 
+                left: 600px;
+                z-index: 3; }
+        </style>
+    
+    </head>
+
+    <body>
+        <div id="bg"> 
+            <div id="box1"></div>
+            <div id="box2"></div>
+            <div id="box3"></div>
+        </div>
+   
+        
+    </body>
+
+</html>

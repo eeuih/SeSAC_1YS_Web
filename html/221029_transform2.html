@@ -1,0 +1,41 @@
+<html>
+
+    <head>
+        <title>transform</title>
+        
+        <style>
+            div { display : inline-block; margin-right:50px;}
+            img { width: 100px; height: 100px;}
+           
+            #img_skewx:hover {transform: skewX(50deg);} /* 기본적으로 시계 방향 */
+            #img_skewy:hover {transform: skewY(50deg);}
+            #img_skewxy:hover {transform: skew(50deg, 50deg);}
+            #img_rotatex:hover {transform: rotateX(100deg);}
+            #img_rotatey:hover {transform: rotateY(100deg);}
+            #img_rotate:hover {transform: rotate(100deg);}
+            #img_scalex:hover {transform: scaleX(2);}
+            #img_scaley:hover {transform: scaleY(2);}
+            #img_scale:hover {transform: scale(2);}
+            #img_scale23:hover {transform: scale(2, 3);}
+
+        </style>
+    
+    </head>
+
+    <body>
+        <div> <img id="img_skewx" src="./image.jpg"> </div>
+        <div> <img id="img_skewy" src="./image.jpg"> </div>
+        <div> <img id="img_skewxy" src="./image.jpg"> </div> <br>
+
+        <div> <img id="img_rotatex" src="./image.jpg"> </div>
+        <div> <img id="img_rotatey" src="./image.jpg"> </div>
+        <div> <img id="img_rotate" src="./image.jpg"> </div> <br>
+
+        <div> <img id="img_scalex" src="./image.jpg"> </div>
+        <div> <img id="img_scaley" src="./image.jpg"> </div>
+        <div> <img id="img_scale" src="./image.jpg"> </div>
+        <div> <img id="img_scale23" src="./image.jpg"> </div>
+        
+    </body>
+
+</html>
