@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title> animation 속성 </title>
+
+        <style>
+            
+            .div1 {
+                width: 100px;
+                height: 100px;
+                background-color: blue;
+                position: relative;
+                animation-name: anim;
+                animation-duration: 2s; /* 몇 초 동안 진행 될지 */ 
+                animation-iteration-count: 3;  /* 반복 되는 횟수 */
+                animation-delay : 1s; 
+                animation-timing-function: ease-out;
+
+            }
+
+            @keyframes anim {
+               /* from { left: 0px; }
+                to { left: 100px; } */ 
+
+                0% {left: 0px;}
+                50% {left: 200px;}
+                100% {left: 100px;} /*% 단위를 사용하면 세부적으로 진행 상황을 나눌 수 있음 보통 25% 단위로*/
+
+            }
+
+
+            .div2 {
+                width: 100px;
+                height: 100px;
+                background-color: green;
+                border-radius: 50px;
+                position: relative;
+                animation-name: ball;
+                animation-duration: 3s; /* 몇 초 동안 진행 될지 */ 
+                animation-iteration-count: 5;  /* 반복 되는 횟수 */
+                animation-timing-function: ease-out;
+
+            }
+
+            @keyframes ball {
+                from { top: 300px; opacity: 1;}
+                to { top: 100px; opacity: 0;}
+              
+            }
+
+
+        </style>
+    </head>
+
+    <body>
+       <div class="div1"></div>
+       <div class="div2"></div>
+    </body>
+</html>
