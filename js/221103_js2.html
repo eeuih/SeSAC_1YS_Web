@@ -1,0 +1,40 @@
+<html>
+
+    <head>
+
+        <script>
+          
+          var date = new Date();
+
+          console.log(date);
+          console.log(date.getYear()); // 1이 붙어있으면 2000년대를 의미함 
+          console.log(date.getMonth()); // 이것도 0이 기준인가 
+          console.log(date.getDate());
+          console.log(date.getDay()); // 일월화수목금토 (0123456) 를 순서로 요일
+          console.log(date.getTime()); // 1970년 1월 1일부터의 . . 밀리초
+          console.log(date.getHours());
+
+          console.log("------------------------------");
+         
+          console.log(Math.min()); 
+          console.log(Math.min(-10, 2, 10));
+          console.log(Math.min(0, 'a', 5));
+          console.log(Math.max(-10, 2, 10));
+         
+          console.log(Math.random()); // 0과 1 사이의 소수점을 랜덤으로 내보낸다.
+          var min = 1; var max = 10 ;
+          console.log(Math.random()*(max-min)+min); // 범위를 지정하여 랜덤으로 내보낸다.
+
+          console.log(Math.round(1.2)); // 반올림
+          console.log(Math.round(-1.7));
+
+          console.log(Math.floor(1.9)); // 내림
+          console.log(Math.ceil(1.1)); // 올림
+
+        </script>
+
+    </head>
+
+    <body>
+    </body>
+</html>

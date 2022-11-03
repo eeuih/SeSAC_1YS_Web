@@ -1,0 +1,71 @@
+<html>
+
+    <head>
+
+      <title>Calculator</title>
+
+        <script>
+
+            
+
+          function work() { 
+            var value1 = document.getElementById("number1").value;
+            var value2 = document.getElementById("number2").value;
+
+
+            if (document.getElementById("operator").value=='+') {
+              document.getElementById("result").value = (Number(value1)+Number(value2));
+            }
+
+            else if (document.getElementById("operator").value=='-') {
+              document.getElementById("result").value = (Number(value1)-Number(value2));
+            }
+
+            else if (document.getElementById("operator").value=='*') {
+              document.getElementById("result").value = (Number(value1)*Number(value2));
+            }
+
+            else if (document.getElementById("operator").value=='/') {
+              document.getElementById("result").value = (Number(value1)/Number(value2));
+            }
+          }
+
+         function reset() {
+
+  
+          var input = document.getElementById("number1"); 
+          input.value = null; 
+
+          var input = document.getElementById("number2"); 
+          input.value = null; 
+
+          var input = document.getElementById("operator"); 
+          input.value = null; 
+
+          var input = document.getElementById("result"); 
+          input.value = null; 
+
+           
+          }
+     
+
+
+
+        </script>
+
+    </head>
+
+    <body>
+
+      <h2> 간단 계산기 </h2>
+
+      값1: <input type="number" id="number1"> <br>
+      값2: <input type="number" id="number2"> <br>
+      연산자: <input type="text" id="operator"><br>
+      결과: <input type="number" id="result"><br><br>
+      <button type="button" onclick="work()"> 계산하기 </button>
+      <button type="button" onclick="reset()"> 초기화 </button>
+
+    </body>
+
+</html>

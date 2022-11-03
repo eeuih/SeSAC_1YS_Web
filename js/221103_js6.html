@@ -1,0 +1,71 @@
+<html>
+
+    <head>
+
+      <title>방명록</title>
+
+        <script>
+
+          var date = new Date(); 
+          num=0; // 전역변수
+    
+
+          function write1() {
+
+            num=num+1;
+
+            
+            
+            var table = document.querySelector("table");
+
+            var tr = document.createElement("tr");
+            var td1 = document.createElement("td");
+            var td2 = document.createElement("td");
+            var td3 = document.createElement("td");
+            var td4 = document.createElement("td");
+
+            tr.append(td1);             
+              td1.innerText=num;
+            tr.append(td2);
+              td2.innerText=document.getElementById("name").value;
+            tr.append(td3);
+              td3.innerText=document.getElementById("content").value;
+            tr.append(td4);
+              td4.innerText=date;
+            table.append(tr);
+
+        }
+
+
+        </script>
+
+    </head>
+
+    <body>
+
+      <h2> 방명록 </h2>
+
+      <strong>작성자:</strong> <input type="text" id="name"> <br>
+      <strong>내용:</strong> <input type="text" id="content"> <br><br>
+
+      <button type="button" onclick="write1()"> 작성 </button> <br><br>
+
+      <table border="1" cellpadding="10" cellspacing="0" >
+
+        <tr>
+          <td id="td1">번호</td>
+          <td id="td2">작성자</td>
+          <td id="td3">내용</td>
+          <td id="td4">작성일</td>
+        </tr>
+
+
+        </table>
+
+
+     
+
+
+    </body>
+
+</html>

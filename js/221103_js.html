@@ -1,0 +1,66 @@
+<html>
+
+    <head>
+
+        <script>
+          var cat = {
+            name: '나비',
+            age: 1,
+            mew: function() {
+                return "야옹"; // 돌려주는 값, 하나의 함수에는 하나의 return이 존재한다. 
+            }
+          }
+          
+          function hello() {
+                return "안녕";
+            }
+
+            function hi() {
+
+                console.log("hi");
+            }
+
+            console.log( hi() ); // hi라는 함수 실행하고 결과를 출력해라.
+            console.log( hello() ); //hello라는 함수 실행하고 결과 출력해라 .
+
+            console.log (cat);
+            console.log(cat.name);
+            console.log(cat.age);
+            console.log(cat.mew());
+
+            var arr1 = [1,2,3, 'a','b','c']; // 배열을 만드는 방법 1 
+            var arr2 = new Array(1,2,3); // 배열을 만드는 방법 2
+
+            console.log (arr1);
+            console.log (arr2);
+            console.log (arr1.indexOf('a'));
+            console.log ("length : " + arr1.length);
+
+            arr1.pop();
+            console.log (arr1);
+
+            arr1.unshift(5);
+            console.log (arr1);
+
+            var me = {
+                name: '홍길동',
+                birth: '0101'  
+            };
+
+            console.log(me);
+            console.log(me["name"]); // 배열에서 index를 지정해서 가져오는 것처럼
+            console.log(me.name);
+
+            me.gender = 'M';
+            me["age"]= 10;
+            console.log(me);
+
+
+        </script>
+
+    </head>
+
+    <body>
+        
+    </body>
+</html>
