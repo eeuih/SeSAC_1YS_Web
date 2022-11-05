@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="crossorigin="anonymous"></script>
+        <script src="./jquery-ui-1.13.2/jquery-ui.js"></script>
+        <link href="./jquery-ui-1.13.2/jquery-ui.css">
+        
+        <style>
+            div { width: 400px; height: 400px; display: flex; justify-content: space-between; align-items: center;}
+            h3 {margin: auto;}
+            .main {
+                border-style: solid;
+                border-width: 10px;
+                border-radius: 50px;
+                border-color: yellow;
+            }
+
+            .apple {background-image:url('apple.jpg'); background-size: contain; }
+            .banana {background-image:url('banana.jpg'); background-size: contain;}
+            .grape {background-image:url('grape.jpg'); background-size: contain;}
+            .peach {background-image:url('peach.jpg'); background-size: contain;}
+
+        </style>
+
+        <script>
+            function apple() { 
+                $("h3").remove();
+                $("div").removeClass();
+                $("div").addClass("apple"); 
+            }
+            function banana() { 
+                $("h3").remove();
+                $("div").removeClass(); 
+                $("div").addClass("banana"); 
+            }
+            function grape() { 
+                $("h3").remove();
+                $("div").removeClass(); 
+                $("div").addClass( "grape"); 
+            }
+            function peach() { 
+                $("h3").remove();
+                $("div").removeClass(); 
+                $("div").addClass( "peach"); 
+            }
+     
+        </script>
+    </head>
+
+
+
+    <body>
+       
+        <div class="main"><h3>과일을 골라볼게요</h3></div>
+
+        
+        <button type="button" onclick="apple()">사과</button>
+        <button type="button" onclick="banana()">바나나</button>
+        <button type="button" onclick="grape()">포도</button>
+        <button type="button" onclick="peach()">복숭아</button>
+ 
+    </body>
+</html>
