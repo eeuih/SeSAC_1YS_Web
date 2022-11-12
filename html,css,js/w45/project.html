@@ -1,23 +1,86 @@
 <html>
     <head>
-      <title>GBJG</title>
+      <title>지출</title>
       <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
       <script>
 
+        // const date = new Date();
+        // const month = date.getMonth() + 1;
+        // const day = date.getDate();
+        //  const today = (month +"월 "+ day +"일");
+        //  console.log(today);
+
+        
+
+        function goalSet(){
+          var goal = $("#goal").val();
+          var p = document.createElement("p");
+          p.innerText = goal;
+          $("#goalmoney").append(p); // 제대로 추가 되는데 그 추가되는 위치가 ........ 
+
+        }
 
 
         function work() {
-            var item = $("#exampleFormControlInput1").val();
-            var amount = $("#exampleFormControlInput2").val();
-        }
-       
+
+            var yoil = document.getElementById("yoil");
+            var yoil_value = (yoil.options[yoil.selectedIndex].value);
+
+            var item = document.getElementById("item").value;
+            var item_add = document.createElement("p");
+            item_add.innerText = item;
+
+            var money = document.getElementById("money").value;
+            var money_add = document.createElement("p");
+            money_add.innerText = money;
+
+            if (yoil_value == 1) {
+                document.querySelector("tr td").append(item_add); 
+                document.querySelector("tr td:last-child").append(money_add); 
+            }
+
+            else if (yoil_value == 2) {
+                document.querySelector("tr:nth-of-type(2) td").append(item_add); 
+                document.querySelector("tr:nth-of-type(2) td:last-child").append(money_add); 
+            }
+
+            else if (yoil_value == 3) {
+                document.querySelector("tr:nth-of-type(3) td").append(item_add); 
+                document.querySelector("tr:nth-of-type(3) td:last-child").append(money_add); 
+            }
+
+            else if (yoil_value == 4) {
+                document.querySelector("tr:nth-of-type(4) td").append(item_add); 
+                document.querySelector("tr:nth-of-type(4) td:last-child").append(money_add); 
+            }
+
+            else if (yoil_value == 5) {
+                document.querySelector("tr:nth-of-type(5) td").append(item_add); 
+                document.querySelector("tr:nth-of-type(5) td:last-child").append(money_add); 
+            }
+
+            else if (yoil_value == 6) {
+                document.querySelector("tr:nth-of-type(6) td").append(item_add); 
+                document.querySelector("tr:nth-of-type(6) td:last-child").append(money_add); 
+            }
+
+            else if (yoil_value == 7) {
+                document.querySelector("tr:nth-of-type(7) td").append(item_add); 
+                document.querySelector("tr:nth-of-type(7) td:last-child").append(money_add); 
+            }
+    
+    }
+
+
       </script>
 
       <style>
         
         body { height:100vh;}
+
+        #goalmoney { font-size: 3rem; font-weight: bold;}
 
       </style>
     </head>
@@ -27,28 +90,44 @@
 
         <div class="container" style="height: 10%;">
 
-            <div> 안녕하세요. </div>
+          <div class="row">
+            <div class="col-2">목표 금액</div>
 
+            <div class="col-6">
+              <div class="mb-3">
+                <input type="text" class="form-control" id="goal" placeholder="목표 금액을 입력하세요.">
+              </div>
+            </div>
+
+            <div class="col-2">
+              <button class="btn btn-primary" type="submit" onclick="goalSet()">확인</button>
+          </div>
+          </div>
+
+          
             <div class="row" >
-                
                 <div class="col-2">
-                    <select class="form-select" aria-label="Default select example">
-                    <option selected>날짜</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <select class="form-select" id ="yoil" aria-label="Default select example">
+                    <option selected>요일</option>
+                    <option value="1">월</option>
+                    <option value="2">화</option>
+                    <option value="3">수</option>
+                    <option value="4">목</option>
+                    <option value="5">금</option>
+                    <option value="6">토</option>
+                    <option value="7">일</option>
                     </select>
                 </div>
 
                 <div class="col-4">
                     <div class="mb-3">
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="ex. 철수 생일 선물">
+                        <input type="text" class="form-control" id="item" placeholder="ex. 철수 생일 선물">
                       </div>
                 </div>
 
                 <div class="col-4">
                     <div class="mb-3">
-                        <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="ex. 10,000">
+                        <input type="text" class="form-control" id="money" placeholder="ex. 10,000">
                       </div>
                 </div>
 
@@ -63,14 +142,16 @@
         </div>
 
 
+
           <table class="table" style="height: 80%;">
             
             <thead class="table-dark">
               <tr>
-                <th scope="col"></th>
-                <th scope="col">항목</th>  
-                <th scope="col" colspan="2">금액</th>
-                <th></th>
+                <th scope="col">요일</th>
+                <th scope="col">항목</th> 
+                <th scope="col">금액</th>
+       
+           
               </tr>
             </thead>
 
@@ -78,69 +159,58 @@
               <tr>
                 <th scope="row">월</th>
                 <td></td>
-                <td coslpan="2"></td>
-                <td></td>
+                <td class="amount"></td>
               </tr>
 
               <tr>
-                <th scope="row">월</th>
+                <th scope="row">화</th>
                 <td></td>
-                <td coslpan="2"></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <th scope="row">월</th>
-                <td></td>
-                <td coslpan="2"></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <th scope="row">월</th>
-                <td></td>
-                <td coslpan="2"></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <th scope="row">월</th>
-                <td></td>
-                <td coslpan="2"></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <th scope="row">월</th>
-                <td></td>
-                <td coslpan="2"></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <th scope="row">월</th>
-                <td></td>
-                <td coslpan="2"></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <th scope="row">월</th>
-                <td></td>
-                <td coslpan="2"></td>
-                <td></td>
-              </tr>
+                <td class="amount"></td>
               
-              
+              </tr>
+
+              <tr>
+                <th scope="row">수</th>
+                <td></td>
+                <td class="amount"></td>
+              </tr>
+
+              <tr>
+                <th scope="row">목</th>
+                <td></td>
+                <td class="amount"></td>
+              </tr>
+
+              <tr>
+                <th scope="row">금</th>
+                <td></td>
+                <td class="amount"></td>
+              </tr>
+
+              <tr>
+                <th scope="row">토</th>
+                <td></td>
+                <td class="amount"></td>
+              </tr>
+
+              <tr>
+                <th scope="row">일</th>
+                <td></td>
+                <td class="amount"></td>
+              </tr>  
               
             </tbody>
           </table>
-
           
-        
+        <div class="container" style="height: 10%;">
 
-    
+          <div class="row">
+            <div class="col-2">목표 금액 </div>
+            <div class="col-6" id="goalmoney" onclick="compare()"></div>
+          </div>
+          </div>
 
+      
 
 
     </body>
