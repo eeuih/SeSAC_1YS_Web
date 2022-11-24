@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            function sendGet(){
+            var form = document.getElementById("form_info");
+
+            $.ajax({
+                url: 'ajax',
+                type: 'GET',
+                data: {name: form.name.value},
+                success: function(data) {alert(data.msg);},
+                error: function(error) {console.error(error);}
+            });
+        }
+
+
+            function sendPost(){
+            var form = document.getElementById("form_info");
+
+            $.ajax({
+                url: 'ajax',
+                type: 'POST',
+                data: {name: form.name.value},
+                success: function(data) {alert(data.msg);},
+                error: function(error) {console.error(error);}
+            }); 
+        }
+        </script>
+
+    </head>
+
+    <body>
+        <h1>ajax 실습</h1>
+        <button type="button" onclick="sendGet();"> get 전송 </button>
+        <button type="button" onclick="sendPost();"> post 전송 </button>
+        <form id ="form_info">
+            <input type="text" name="name">
+        </form>
+    </body>
+</html>

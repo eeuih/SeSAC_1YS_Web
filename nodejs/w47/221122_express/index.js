@@ -83,5 +83,5 @@ app.get('/post_practice', (req,res)=> {
 
 app.post('/post', (req,res)=> {
     console.log(req.body);
-    res.send("post 요청 성공");
+    res.send("post 요청 성공 변경");
 })

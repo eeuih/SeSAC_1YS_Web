@@ -1,0 +1,45 @@
+<html>
+    <head>
+        
+        <script>
+
+            function sendGet(){
+            var form = document.getElementById("form_info");
+            let queryString ="?name=" + form.name.value;
+            
+            fetch("/fetch"+queryString, {method: "get",})
+            .then(function(response){
+                return response.json();
+            }).then(function(res){
+                alert(res.msg);
+            });
+        }
+
+            function sendPost(){
+            var form = document.getElementById("form_info");
+
+            fetch("/fetch", {
+                method: "post",
+                headers: {"Content-Type": "application/json",},
+                body: JSON.stringify({name: form.name.value}),
+            }).then(function(response){
+                return response.json();
+            }).then(function(res){
+                alert(res.msg);
+            });
+        }
+
+        </script>
+
+    </head>
+
+    <body>
+
+        <h1>Fetch 실습</h1>
+        <button type="button" onclick="sendGet();"> get 전송 </button>
+        <button type="button" onclick="sendPost();"> post 전송 </button>
+        <form id ="form_info">
+            <input type="text" name="name">
+        </form>
+    </body>
+</html>

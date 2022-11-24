@@ -1,0 +1,66 @@
+<html> 
+    <head> 
+        <title></title>
+        <meta charset="UTF-8">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script>
+            function sendGet(){
+            var form = document.getElementById("join");
+                axios({
+                    method: "get", 
+                    url: "/getForm", 
+                    params: { name: form.name1.value, gender: form.gender.value, birthYear: form.birthYear.value, birthMonth: form.birthMonth.value, birthDay: form.birthDay.value }
+                }).then(function(res){ 
+                    alert(
+                        "이름은 "+ res.data.name +  " 입니다" +
+                        " 성별은 "+ res.data.gender + " 이고 " +
+                        res.data.birthYear+"년 " +
+                        res.data.birthMonth+"월 " +
+                        res.data.birthDay+"일" + 
+                        "에 태어났습니다."
+
+                    );
+                });
+            }
+        </script>
+
+    </head>
+
+    <body> 
+
+        <form id= "join">
+            
+            이름 <input type="text" name="name1" required> <br>
+
+            <fieldset>
+                <legend>성별</legend>
+                <input type="radio" name="gender" value="남자" id="men"><label for="men">남자</label>
+                <input type="radio" name="gender" value="여자" id="women"> <label for="women">여자</label>
+            </fieldset> <br>
+            
+            <fieldset>
+                <legend>생년월일</legend>
+                <select name="birthYear">
+                    <% for (var i= 2010; i<=2022; i++) {%>
+                    <option value="<%=i%>"><%=i%></option>
+                    <% } %>
+                </select>년
+
+                <select name="birthMonth">
+                    <% for (var i= 1; i<=12; i++) {%>
+                    <option value="<%=i%>"><%=i%></option>
+                    <% } %>
+                </select>월
+
+                <select name="birthDay">
+                    <% for (var i= 1; i<=31; i++) {%>
+                    <option value="<%=i%>"><%=i%></option>
+                    <% } %>
+                </select>일
+            </fieldset> <br>
+
+            <button type="button" onclick="sendGet()">회원가입</button>
+        </form>
+
+    </body>
+</html>
