@@ -29,3 +29,39 @@ exports.register_visitor = (info, cb) => { // info 에는 req.body 정보가 들
 
     })
 }
+
+exports.delete_visitor = (id, cb) => {
+    var sql = `DELETE FROM visitor WHERE id = ${id}`;
+
+    cnn.query(sql, (err, result)=>{ //sql문이 실행되고 나서 실행 될 콜백 
+        if (err) throw err;
+
+        console.log("delete result : ", result);
+        cb();
+
+    }) 
+}
+
+exports.get_visitor_by_id_model = (id, cb) => {
+    var sql = `SELECT * FROM visitor WHERE id = ${id}`;
+
+    cnn.query(sql, (err, rows)=> {
+        if (err) throw err; 
+
+        console.log("select by id : ", rows);
+        cb(rows[0]);
+    })
+
+}
+
+exports.update_visitor = (info, cb) => {
+    var sql = `UPDATE visitor SET name='${info.name}', comment='${info.comment}' WHERE id=${info.id}`;
+
+    cnn.query(sql, (err, result)=> {
+        if (err) throw err;
+
+        console.log("update result : ", result);
+        cb();
+    })
+
+}
