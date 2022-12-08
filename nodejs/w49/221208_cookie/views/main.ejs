@@ -1,0 +1,29 @@
+<html>
+    <head>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    </head>
+    <body>
+      님 환영합니다. 
+
+        <form id ="logout">
+            <button type="button" onclick="logout()">로그아웃</button>
+        </form>
+
+        <script>
+            function logout(){
+                var form = document.getElementById("logout");
+                axios({
+                    method: 'delete',
+                    url: "/logout",
+                }).then(function(res){
+                   alert(res.data);
+                   window.location.href = '/';
+          
+                });
+            }
+
+        </script>
+
+    </body>
+</html>
