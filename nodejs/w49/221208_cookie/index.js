@@ -16,8 +16,11 @@ app.use(session({
 //  secure:
 }));
 
+const user = {id: "a", pw:"1"};
+
 app.get("/", (req, res)=>{
-    if(req.session.user) res.render("main", {isLogin: true});
+    console.log(req.session.user);
+    if(req.session.user) res.render("index", {isLogin: true, id: req.session.user}); // 데이터와 함께 렌더
     else res.render("index", {isLogin: false});
 });
 
@@ -26,20 +29,18 @@ app.get("/", (req, res)=>{
 //     res.send("세션 생성 성공")
 // });
 
-const user = {id: "a", pw:"1"};
-
-app.post("/login", (req,res)=>{
-
-if(req.body.id == user.id&& req.body.pw== user.pw){
-    req.session.user = req.body.id;
-    res.send("로그인 성공");
-}
-
-else{res.send("로그인 실패");}
-
+app.get("/login", (req,res)=> {
+    res.render("login");
 });
 
-
+app.post("/login", (req,res)=>{
+    if(req.body.id == user.id && req.body.pw == user.pw) {
+        req.session.user = req.body.id;
+        res.send(true);
+    } else {
+        res.send(false);
+    }
+})
 
 app.delete("/logout", (req,res)=>{
      req.session.destroy(function(err){ // 세션에서 사용하는 destroy 함수 
@@ -47,6 +48,17 @@ app.delete("/logout", (req,res)=>{
          res.send("로그아웃 성공!")
      })
  });
+
+
+// get 방식 로그아웃 함수 없이 동적 폼 없이 링크로 보내도 됨
+// app.get("/logout", (req,res)=>{
+//     req.session.destroy(function(err){
+//         if(err) throw err;
+//         res.redirect("/");
+//     });
+// })
+
+
 
 app.listen(port, ()=>{
     console.log("Server open", port);

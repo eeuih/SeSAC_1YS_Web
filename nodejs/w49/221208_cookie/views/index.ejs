@@ -3,43 +3,29 @@
         <title>환영합니다!</title>
        <meta charset="UTF-8">
        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-       <script>
-      
-       </script>
     </head>
 
     <body>
-        <h2>안녕하세요 </h2>
-        <form id="login">
-            아이디 : <input type="text" name="id" placeholder="아이디를 입력하세요." required> <br>
-            비밀번호 : <input type="password" name="pw" placeholder="비밀번호를 입력하세요." required> <br>
-
-            <div class="login-btn">
-                <button type="button" onclick="login()">로그인</button>
-            </div> <br>
-
-
-            <div class="signup=btn">
-                <button type="button" > 회원가입 </button>
-            </div>
-        </form>
-
-
+        <% if(!isLogin) { %>
+            <a href="/login"> 로그인</a>
+            <a href="/register"> 회원가입</a>
+        <% } else { %>
+           <div><%=id%>님 환영합니다.</div>
+            <a href="/logout" onclick="logout()">로그아웃</a>
+        <% } %>
 
         <script>
-            function login(){
-                var form = document.getElementById("login");
+            function logout(){
+                var form = document.getElementById("logout");
                 axios({
-                    method: 'post',
-                    url: "/login",
-                    data: {id: form.id.value, pw: form.pw.value}
+                    method: 'delete',
+                    url: "/logout",
                 }).then(function(res){
                    alert(res.data);
                    window.location.href = '/';
                 });
             }
-
         </script>
-
     </body>
+
 </html>
