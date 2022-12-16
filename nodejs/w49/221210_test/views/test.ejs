@@ -1,0 +1,25 @@
+<html>
+    <head>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    </head>
+    <body>
+  
+        <button type ="button" onclick="check()"> 조회하기 </button>
+
+        <script>
+            function check(){
+                var test = "테스트입니다.";
+                axios({
+                method: "post", 
+                url: "test",
+                data: {test}
+        }).then(function(res){
+           res.data; 
+        });
+    };
+  
+        </script>
+    </body>
+</html>

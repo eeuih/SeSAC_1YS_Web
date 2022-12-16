@@ -1,0 +1,80 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>카카오맵!@!!!!!</title>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8d2772601590f0ed140826adec58e8a1&libraries=services"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="map" style="width:80%;height:80%;"></div>
+    <div id="result"></div>
+
+<script>
+
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+        mapOption = { 
+            center: new kakao.maps.LatLng(37.56, 126.97), // 지도의 중심좌표
+            level: 4 // 지도의 확대 레벨
+        };
+        
+    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+    
+    if (navigator.geolocation) {
+        
+        // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+        navigator.geolocation.getCurrentPosition(function(position) {
+            
+            var lat = position.coords.latitude, // 위도
+                lon = position.coords.longitude; // 경도
+            
+            var locPosition = new kakao.maps.LatLng(lat, lon) // geolocation으로 얻어온 좌표
+            presentPosition=locPosition;
+    
+            map.setCenter(locPosition);
+                
+        });
+        
+    } else { // HTML5의 GeoLocation을 사용할 수 없을때 
+        
+        var locPosition = new kakao.maps.LatLng(37.566826, 126.9786567)
+        alert('현재 위치를 찾을 수 없습니다!');
+    };
+
+
+
+  
+// 콜백으로 해보자 ㅡㅡ
+
+
+    function getInfo() {
+        var bounds = map.getBounds(); // 지도의 현재 영역 
+        var swLatLng = bounds.getSouthWest(); // 영역의 남서쪽 좌표
+        var neLatLng = bounds.getNorthEast(); // 영역의 북동쪽 좌표
+        let latlonData = {
+            'swLat': swLatLng['Ma'],
+            'swLon': swLatLng['La'],
+            'neLat': neLatLng['Ma'],
+            'neLon': neLatLng['La'],
+        };
+        axios({
+            method: "post", 
+            url: "marker",
+            data: { latlonData }
+        }).then(function(res){
+           res.data; 
+        });
+
+        
+
+    };
+    getInfo(); // 버튼ㅇ클릭했을떄 이 함수 실행될수잇으면댄ㄹ듯
+
+    // 지도를 움직였을 때 이벤트가 감지되면 지도가 움직인 값을 보내줄 수 있도록 한다. 구현해야함
+    // 실시간 아니고 버튼 클릭 시 다시 불러올 수 있또록 하기 ~~~ 
+
+
+</script>
+</body>
+</html>
