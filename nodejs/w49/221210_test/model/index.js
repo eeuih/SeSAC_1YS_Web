@@ -21,7 +21,7 @@ db.Sequelize = Sequelize;
 
 
 
-db.Test = require("./Test")(sequelize, Sequelize)  // 9번째 줄, 1번째 줄을 인자로 
+db.zwMap = require("./Test")(sequelize, Sequelize)  // 9번째 줄, 1번째 줄을 인자로 
 
 module.exports = db;
 
