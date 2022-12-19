@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Form</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/static/css/join.css">
+    <script src="/static/js/join.js"></script>
+</head>
+<body>  
+    <div class="wrapper">
+        <div class="item">
+            <div class="log"><h1>Join</h1></div>
+
+            <form action="" id="join_form">
+                <input  type="text" placeholder="이름" class="in" name="user_name">
+                <!-- <div name="user_email"> -->
+                    <input type="text" placeholder="아이디" class="inId" name="email"  >
+                    <!-- <input type="text" placeholder="이메일" class="inEmail" id="domain-txt"  >
+                    <select id="domain-list">
+                        <option value="type">직접 입력</option>
+                        <option value="@naver.com">@naver.com</option>
+                        <option value="@google.com">@google.com</option>
+                        <option value="@hanmail.net">@hanmail.net</option>
+                        <option value="@nate.com">@nate.com</option>
+                        <option value="@kakao.com">@kakao.com</option>
+                    </select>
+                </div> -->
+                
+                <input type="password" placeholder="비밀번호" class="in" id="user_pw1" name="pw" >
+                <!-- <input type="password" placeholder="비밀번호 확인" class="in" id="user_pw2" name="user_pw"> -->
+                <div class="mismatch-message hide">두 비밀번호가 일치하지 않습니다.</div>
+
+
+                <p class="birth">생년월일</p>
+                <div class="info" id="info_birth">
+                    <select class="box" id="birth-year">
+                      <option disabled selected>출생 연도</option>
+                    </select>
+                    <select class="box" id="birth-month">
+                      <option disabled selected>월</option>
+                    </select>
+                    <select class="box" id="birth-day">
+                      <option disabled selected>일</option>
+                    </select>
+                </div>
+                <input type="button" id="btn" value="회원가입" onclick="join()"><br>
+            </form>
+
+        </div>
+    </div>
+
+    
+</body>
