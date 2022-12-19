@@ -19,35 +19,31 @@ exports.marker = async(req,res) => {
 
 exports.marker_list = async(req,res) => {
 
-    var currentLocate = {
-        top: req.body.latlonData.swLat,
-        left: req.body.latlonData.swLon,
-        bottom: req.body.latlonData.neLat,
-        right: req.body.latlonData.neLon   
-    };
-   
 
-
-
-
-    
     var zwshopMap = await zwMap.findAll({
         raw: true,
-        where: { 
-            lat : { [Op.between]: [currentLocate.top, currentLocate.bottom]},
-            lon : { [Op.between]: [currentLocate.left, currentLocate.right]}
-        }
     });
+
+    // var currentLocate = {
+    //     top: req.body.latlonData.swLat,
+    //     left: req.body.latlonData.swLon,
+    //     bottom: req.body.latlonData.neLat,
+    //     right: req.body.latlonData.neLon   
+    // };
+   
+
+    // var zwshopMap = await zwMap.findAll({
+    //     raw: true,
+    //     where: { 
+    //         lat : { [Op.between]: [currentLocate.top, currentLocate.bottom]},
+    //         lon : { [Op.between]: [currentLocate.left, currentLocate.right]}
+    //     }
+    // });
     
     //console.log("현재위치:", currentLocate);
 
     res.send(zwshopMap);
 
-    // const arr =[]
-    // for(var ele of zwshopMap) {
-    //     arr.push(ele.spot_name)
-    // }
-    // console.log(arr);
 }
 
 

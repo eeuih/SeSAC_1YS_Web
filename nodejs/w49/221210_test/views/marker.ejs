@@ -7,83 +7,83 @@
 </head>
 
 <body>
-    <div id="map" style="width:80%;height:80%;"></div>
+    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
     <div id="result"></div>
-
-    <button type="button" onclick="initMap()">초기화</button>
 
 <script>
 
-    function initMap(){
-        lat; lon;
-        var map = new kakao.maps.Map(document.getElementById('map'), {
-            center: new kakao.maps.LatLng(lat, lon),
-            level:6
-        });
-       
+let finalTest = mapDrawer(); // 아래 함수 정의에서 리턴 받은 값을 finalTest 변수로 지정했다. 
+
+// 그런데 프로미스 형태로 저장되어서 promise result를 뽑아내기 위해 아래 코드를 작성합니다..
+const getData = () => {
+  finalTest.then((appData) => {
+    var map = appData;
+    // 접속한 지도를 기준으로 멀 한다면.. 이 안에서 먼가를 실행해주어야 해용 .
+    console.log(map);
+  });
 };
 
-    // 현재 접속 위치에 맞는 지도를 그리기 
-
-    var getPosition = function(options) {
-        return new Promise(function (resolve, reject){
-            navigator.geolocation.getCurrentPosition(resolve, reject, options);
-        });
-    }
+getData();
 
 
-    getPosition()
-    .then((position)=>{
-        var lat = position.coords.latitude;
-        var lng = position.coords.longitude;
-        var latlng = new kakao.maps.LatLng(lat, lng); // center로 설정하기 위한 좌표
-        
-        var map = new kakao.maps.Map(document.getElementById('map'), {
-            center : latlng, level:6
-        });
 
-        var bounds = map.getBounds();
-        var swLatLng = bounds.getSouthWest();
-        var neLatLng = bounds.getNorthEast();
-        let latlonData = {
-            'swLat': swLatLng['Ma'],
-            'swLon': swLatLng['La'],
-            'neLat': neLatLng['Ma'],
-            'neLon': neLatLng['La'],
-        };
+function getMyGps() {
+    return new Promise((resolve, rejected) => {
+        navigator.geolocation.getCurrentPosition(resolve, rejected);
+    });
+}
 
-        kakao.maps.event.addListener(map, 'center_changed', function() {
-            var latlng = map.getCenter(); 
-            console.log("변경",latlng.getLat());
-            console.log("변경",latlng.getLng());
-});
+function setMapwithNewLatLng (newLatLng) {
 
-        axios({
-            method: "post", // db에서 제로웨이스트샵 정보 불러오기
+    let mapContainer = document.getElementById('map');
+
+    let initPosition = new kakao.maps.LatLng(newLatLng.userLat, newLatLng.userLng);
+        let options = { center: initPosition, level: 6 };
+        let map = new kakao.maps.Map(mapContainer, options);
+
+        axios({ 
+            method: "post", 
             url: "marker",
-            data: { latlonData } // 지도 크기 전달
 
         }).then(function(res){
           
-            var position = res.data; // position 변수에 현재 지도 크기만큼에 해당하는 가게 배열 담기 
+            var spotList = res.data; 
 
-            for (i=0; i<position.length; i++){ 
+            for (i = 0; i < spotList.length; i++){ 
+                var markerPosition  = new kakao.maps.LatLng(spotList[i].lat, spotList[i].lon); 
+                var marker = new kakao.maps.Marker({ position: markerPosition });
+                marker.setMap(map);
+            }
+        });
 
-            var markerPosition  = new kakao.maps.LatLng(position[i].lat, position[i].lon); 
-            var marker = new kakao.maps.Marker({
-                position: markerPosition
-            });
-            marker.setMap(map);
-        };
-
-    }).catch((err) => { console.error(err.message); });    
-});
+        return map; // 현재 접속 위치를 기준으로 한 지도를 map drawer 함수 내로 리턴한다. 
+    }
 
 
+async function mapDrawer() {
+    let newLatLng = {};
+    
+    try {
+        let position = await getMyGps();
+
+        newLatLng.userLat = position.coords.latitude;
+        newLatLng.userLng = position.coords.longitude;
+
+        let test = setMapwithNewLatLng(newLatLng);
+        return test; // setMapwithNewLatLng에서  리턴받은값을 또 리턴한다.. 
+
+        
+        } catch (err) {
+            console.error(err.message);
+
+            newLatLng.userLat = 36.366701;
+            newLatLng.userLng = 127.344307;
+
+            setMapwithNewLatLng(newLatLng);
+        }       
+    }
 
 
-
- 
 </script>
 </body>
 </html>
