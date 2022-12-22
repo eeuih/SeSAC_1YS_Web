@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<script type="text/javascript">
+
+
+
+
+function testChange(){
+    var locations=document.getElementById("locations");
+    while (locations.hasChildNodes()){ locations.removeChild(locations.firstChild ); }
+
+    selectData = document.getElementById("choose");
+    var selectvalue = selectData.options[selectData.selectedIndex].value;
+
+    if (selectvalue == "map"){
+        axios.post('test2').then(function(res){
+            for(var i=0;i<res.data.length;i++){
+  			const newDiv = document.createElement('div');
+  			document.getElementById("locations").appendChild(newDiv);
+  			newDiv.innerText=res.data[i].spot_name;
+		}
+            ;})
+    }
+
+    else if (selectvalue == "user"){
+        axios.post('test3').then(function(res){
+            for(var i=0;i<res.data.length;i++){
+  			const newDiv = document.createElement('div');
+  			document.getElementById("locations").appendChild(newDiv);
+  			newDiv.innerText=res.data[i].user_name;
+		}
+            ;})
+    }
+    
+}
+
+</script>
+
+<div class="select-box">
+    <select id ="choose" onchange="testChange()">
+        <option value="map">지도</option>
+        <option value="user">사용자</option>
+    </select>
+</div>
+<div class="location-box">
+    <div id="locations">
+    <!--이곳에 div 생성된다-->
+    </div>
+</div>
+</body>
+</body>

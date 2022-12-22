@@ -17,6 +17,7 @@ db.Sequelize = Sequelize;
 module.exports = db;
 
 db.User = require("./User")(sequelize, Sequelize);
+db.zwMap = require("./Test")(sequelize, Sequelize)  // 9번째 줄, 1번째 줄을 인자로 
 
 // db.zwMap = require("./zwMap")(sequelize, Sequelize);
 
