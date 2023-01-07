@@ -5,5 +5,12 @@ module.exports = {
     'linebraek-style': 0,
     'no-console': 'off',
   },
-  parser: 'babel-parser',
+  parser: 'babel-eslint',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
 };
