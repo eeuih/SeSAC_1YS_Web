@@ -7,14 +7,6 @@
   pointer-events: none;
 }
 
-.test {
-  background-color: lightcoral;
-  color: orange;
-  font-size: large;
-  width: 500px;
-  height: 100px;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
