@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>User Info</title>
+</head>
+<body>
+
+<p th:text="${username}+'님 안녕하세요!'"></p>
+<p th:text="'아이디는 ' + ${userid}"></p>
+
+<script>
+    function change() {
+        var form = document.getElementById('change');
+        axios.put(`/change`, {name : form.name.value})
+        .then((res)=>{
+        alert(res.data)
+        location.href = "/userInfo";
+        });
+    }
+
+    function ddelete() {
+    axios.delete(`/delete`, {})
+    .then((res)=>{
+    alert(res.data)
+    location.href = "/crud";
+    });
+    }
+
+</script>
+
+
+
+
+<form id="change" >
+    <h3>이름 수정하기</h3>
+        이름 : <input type="text" name="name"><br>
+        <button type="button" onclick="change();">수정</button>
+</form>
+
+
+
+<button type="button" onclick="ddelete();">탈퇴</button>
+</body>
+</html>
