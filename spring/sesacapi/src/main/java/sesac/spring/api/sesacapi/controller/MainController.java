@@ -288,9 +288,12 @@ public class MainController {
         return msg ;
     }
 
-    @DeleteMapping("/delete")
+    @PutMapping("/delete")
     @ResponseBody
     public String deleteAPI(){
+        user.name = "";
+        user.id = "";
+        user.pw = "";
 
         String msg = "회원 탈퇴 완료되었습니다.";
         return msg ;

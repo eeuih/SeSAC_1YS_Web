@@ -6,11 +6,15 @@
     <title>User Info</title>
 </head>
 <body>
-
-<p th:text="${username}+'님 안녕하세요!'"></p>
-<p th:text="'아이디는 ' + ${userid}"></p>
-
 <script>
+const currentUser = window.localStorage.getItem('currentUser')
+document.write("<h3>안녕하세요! "+ currentUser+"님");
+window.onload = function(){
+    axios.post(`/userInfo`, {userid : currentUser})
+    .then((res)=>{
+    console.log(res.data)});
+}
+
     function change() {
         var form = document.getElementById('change');
         axios.put(`/change`, {name : form.name.value})
